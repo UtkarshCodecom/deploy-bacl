@@ -8,6 +8,7 @@ const cors = require('cors');
 
 const errorMiddleware = require("./middleware/error");
 
+app.use(cors({ origin: '*' }));
 // Config
 if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({ path: "backend/config/config.env" });
@@ -28,7 +29,7 @@ app.use("/api/v1", product);
 app.use("/api/v1", user);
 app.use("/api/v1", order);
 app.use("/api/v1", payment);
-app.use(cors({ origin: '*' }));
+
 
 app.use(express.static(path.join(__dirname, "./build")));
 
